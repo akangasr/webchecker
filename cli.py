@@ -15,7 +15,8 @@ from collections import defaultdict
 @click.option('--configfile', default='./pages.json',
               help='File with pages to be checked.')
 @click.option('--delay', default=-1, type=int,
-              help='Repeat check periodically with delay of X seconds between runs. Negative value indicates no repeat.')
+              help='Repeat check periodically with delay of X seconds '
+                   'between runs. Negative value indicates no repeat.')
 @click.option('--logfile', default='./log.json',
               help='Output log file.')
 @click.option('--verbose', is_flag=True,
@@ -61,17 +62,21 @@ def run_flask_app(logfile):
                     ret.append(f"<li>{ts} Response failed</li>")
                 elif event['type'] == 'response_received':
                     duration = event['duration']
-                    ret.append(f"<li>{ts} Response received in {duration:.2f} s</li>")
+                    ret.append(f"<li>{ts} Response received in "
+                               f"{duration:.2f} s</li>")
                 elif event['type'] == 'requirement_passed':
                     requirement = event['requirement']
-                    ret.append(f"<li>{ts} Requirement {requirement} passed</li>")
+                    ret.append(f"<li>{ts} Requirement {requirement} "
+                               f"passed</li>")
                 elif event['type'] == 'requirement_failed':
                     requirement = event['requirement']
-                    ret.append(f"<li>{ts} Requirement {requirement} failed</li>")
+                    ret.append(f"<li>{ts} Requirement {requirement} "
+                               f"failed</li>")
             ret.append("</ul>")
         return "".join(ret)
 
     app.run()
+
 
 def check_page(page, config, log):
     requirement_checkers = get_requirement_checkers()
