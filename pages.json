@@ -1,0 +1,21 @@
+{
+  "Wikipedia main page": {
+    "url": "https://www.wikipedia.org/",
+    "requirements": [
+      ["content_includes", "The Free Encyclopedia"]
+    ]
+  },
+  "Google search": {
+    "url": "https://www.google.com/",
+    "requirements": [
+      ["content_includes", "Google"],
+      ["content_does_not_include", "Baidu", "Altavista"]
+    ]
+  },
+  "Amazon store": {
+    "url": "https://www.amazon.com/",
+    "requirements": [
+      ["content_does_not_include", "Aliexpress"]
+    ]
+  }
+}
